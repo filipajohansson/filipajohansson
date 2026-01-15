@@ -33,7 +33,7 @@ header .container {
 }
 
 .container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 48px;
 }
@@ -52,6 +52,13 @@ header h1 a {
     color: inherit;
     border-bottom: 2px solid transparent;
     transition: border-bottom-color 0.3s ease;
+}
+
+.about {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    transition: filter 0.3s ease;
 }
 
 header h1 a:hover {
@@ -110,7 +117,7 @@ a:hover{
     color: var(--subtext);
 }
 
-/* Kursinfo */
+
 .course-info{
     background: linear-gradient(90deg,#fff,#fbfdff);
     border-left: 4px solid var(--accent);
@@ -136,7 +143,6 @@ a:hover{
     font-size: 1.2rem;
 }
 
-/* Tidslinje */
 .timeline{
     margin: 1.25rem 0;
     border-top: 1px dashed rgba(15,23,32,0.05);
@@ -311,17 +317,17 @@ a{
 
 .program-grid {
     display: grid;
-    grid-template-columns: 1fr; /* stapla som standard (mobil) */
+    grid-template-columns: 1fr;
     gap: 20px;
     align-items: start;
 }
 
-/* media-kolumnens innehåll */
+
 .program-media {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    align-items: flex-end;        /* centrerar bilden (och audio) i kolumnen */
+    align-items: flex-end;      
     padding: 12px 0;
 }
 
@@ -332,19 +338,17 @@ a{
     align-items: center;
 }
 
-/* bild i media-kolumnen */
 .program-img {
     width: 360px;
     height: 420px;
-    object-fit: cover;        /* visa hela bilden utan att croppa */
+    object-fit: cover;      
     object-position: center;
-    background: var(--surface); /* fyller eventuella "letterbox"-ytor */
+    background: var(--surface); 
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(15,23,32,0.06);
     border: 1px solid var(--border);
 }
 
-/* audio styling */
 .audio-player,
 .audio-player audio {
     width: 100%;
@@ -353,7 +357,6 @@ a{
     outline: none;
 }
 
-/* Desktop: vänster 1/3, höger 2/3 */
 @media (min-width: 900px) {
     .program-grid {
         grid-template-columns: 1fr 2fr;
@@ -361,7 +364,6 @@ a{
         align-items: stretch;
     }
 
-    /* om du vill centrera bilden i sin kolumn (valfritt) */
     .program-media {
         justify-content: start;
     }
@@ -376,16 +378,39 @@ a{
 .code-container {
     position: relative;
     width: 100%;
+    margin: 0;
     cursor: pointer;
-    margin: 0 auto; /* extra centrering */
+    min-height: 850px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(11,99,215,0.08);
+    transition: all 0.3s ease;
+}
+
+.code-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 15px 50px rgba(11,99,215,0.15);
+    transform: translateY(-2px);
 }
 
 .codepic {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    width: 100%;
-    height: 100%;
-    transition: opacity 0.3s ease;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.code-container:hover .codepic {
+    opacity: 0.8;
+    transform: scale(1.1);
 }
 
 .coding {
@@ -397,25 +422,31 @@ a{
     opacity: 0;
     transition: opacity 0.3s ease;
     object-fit: contain;
-    border-radius: 5px;
+    border-radius: 0;
 }
 
 .magic {
     text-align: center;
-    margin: 2rem 0;
-    background: linear-gradient(90deg,#fff,#fbfdff);
-    padding: 2rem;
-    margin: 1rem 0;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(15,23,32,0.04);
+
 }
 
-/* Footer */
+.magic h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+
 footer {
     width: 100%;
-    background: transparent;
+    background: linear-gradient(180deg, var(--accent-600), var(--accent));
     text-align: center;
     padding: 40px 0;
-    color: var(--subtext);
+    color: #fff;
     border-top: 1px solid rgba(15,23,32,0.03);
-    font-size: 0.95rem;}
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 4px 24px rgba(11,99,215,0.06);
+    transition: box-shadow 0.4s ease;
+}
+    
